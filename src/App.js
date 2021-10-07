@@ -13,15 +13,18 @@ import {
   TextField,
   Typography,
   Toolbar,
+  Card,
 } from "@material-ui/core";
 
 /*TODOS
  * Update monster cards visual design
  * clean up files
  * upgrade to typescript
+ * clean up console errors
  * full stat popout
  * name in roll
  * die type in roll log
+ * Add export/import dash
  * parse non-exlicit rolls
  * Update edit text visual design
  *
@@ -124,7 +127,7 @@ function App() {
         <Toolbar>
           <select onChange={changeSelect}>
             <option value="" disabled selected>
-              Select your option
+              Select a Monster
             </option>
             {names}
           </select>
@@ -156,7 +159,7 @@ function App() {
         deleteMonster={deleteMonster}
         editSaved={editSaved}
       />
-      <div className="sticky">
+      <Card className="sticky">
         <TextField
           label="Rolls"
           variant="outlined"
@@ -167,7 +170,7 @@ function App() {
           rows={6}
           rowsMax={6}
         ></TextField>
-      </div>
+      </Card>
     </>
   );
 }

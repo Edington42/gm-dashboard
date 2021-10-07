@@ -6,13 +6,15 @@
   flex: 1;
   display: flex;
   flex-wrap: wrap;
+  background-color: whitesmoke;
 }
 
 .monster {
-  border: 1px solid;
-  margin: 2px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
   width: 20em;
-  background-color: #dcb8cb;
 }
 
 .icon {
@@ -43,7 +45,7 @@ select {
 .sticky {
   bottom: 0em;
   background-color: white;
-
+  padding: 0.5em;
   position: sticky;
   position: -webkit-sticky;
 }

@@ -8,9 +8,9 @@ export function ActionArea({ stats }) {
     ...stats.legendary_actions,
   ];
   let area = actions.map((action) => (
-    <li>
+    <div>
       <Action key={action.name} action={action} />
-    </li>
+    </div>
   ));
-  return <ul>{area}</ul>;
+  return <div>{area}</div>;
 }
