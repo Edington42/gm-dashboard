@@ -14,10 +14,12 @@ import {
   Typography,
   Toolbar,
   Card,
+  BottomNavigation,
 } from "@material-ui/core";
 
 /*TODOS
  * Update monster cards visual design
+ * Better roller scroll bar
  * clean up files
  * upgrade to typescript
  * clean up console errors
@@ -26,6 +28,7 @@ import {
  * die type in roll log
  * Add export/import dash
  * parse non-exlicit rolls
+ * Drag and drop cards
  * Update edit text visual design
  *
  *
@@ -122,7 +125,7 @@ function App() {
   // ));
 
   return (
-    <>
+    <div className="app">
       <AppBar position="static" className="app-header">
         <Toolbar>
           <select onChange={changeSelect}>
@@ -141,25 +144,26 @@ function App() {
           </Tabs>
         </Toolbar>
       </AppBar>
-
-      <div className="App">
-        {edit && (
-          <div className="search">
-            <textarea
-              className="edit-area"
-              rows={10}
-              onChange={textChange}
-              value={selectionText}
-            />
-          </div>
-        )}
+      <div className="contain">
+        <div>
+          {edit && (
+            <div className="search">
+              <textarea
+                className="edit-area"
+                rows={10}
+                onChange={textChange}
+                value={selectionText}
+              />
+            </div>
+          )}
+        </div>
+        <MonsteArea
+          monsters={dash}
+          deleteMonster={deleteMonster}
+          editSaved={editSaved}
+        />
       </div>
-      <MonsteArea
-        monsters={dash}
-        deleteMonster={deleteMonster}
-        editSaved={editSaved}
-      />
-      <Card className="sticky">
+      <div className="sticky">
         <TextField
           label="Rolls"
           variant="outlined"
@@ -170,8 +174,8 @@ function App() {
           rows={6}
           rowsMax={6}
         ></TextField>
-      </Card>
-    </>
+      </div>
+    </div>
   );
 }
 

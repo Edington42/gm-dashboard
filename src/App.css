@@ -1,11 +1,28 @@
+html {
+  overflow-y: hidden;
+}
+
 .edit-area {
   width: 100%;
 }
 
+.app-header {
+  flex-grow: 0;
+  height: 9vh;
+}
+
 .monster-area {
-  flex: 1;
   display: flex;
   flex-wrap: wrap;
+
+  flex-grow: 1;
+}
+
+.contain {
+  flex-grow: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 70vh;
   background-color: whitesmoke;
 }
 
@@ -15,6 +32,7 @@
   margin-left: 0.5em;
   margin-right: 0.5em;
   width: 20em;
+  height: fit-content;
 }
 
 .icon {
@@ -23,7 +41,7 @@
 }
 
 .search {
-  flex: 1;
+  flex-grow: 0;
   min-width: 20em;
 }
 
@@ -39,13 +57,13 @@ select {
   width: 100%;
   white-space: pre-wrap;
   background-color: white;
-  top: 0.4em;
+  bottom: 0.04em;
+  position: absolute;
 }
 
 .sticky {
-  bottom: 0em;
-  background-color: white;
+  height: 21vh;
+  background-color: whitesmoke;
+  bottom: 0;
   padding: 0.5em;
-  position: sticky;
-  position: -webkit-sticky;
 }
