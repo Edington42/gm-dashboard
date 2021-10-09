@@ -18,13 +18,14 @@ import {
 } from "@material-ui/core";
 
 /*TODOS
+ * die type in roll log
+ * Add export/import dash
  * clean up files
  * upgrade to typescript
  * clean up console errors
  * full stat popout
  * name in roll
- * die type in roll log
- * Add export/import dash
+ *
  * parse non-exlicit rolls
  * Drag and drop cards
  * Update edit text visual design

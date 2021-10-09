@@ -40,6 +40,11 @@ html {
   background: dimgray;
 }
 
+@font-face {
+  font-family: "myFont";
+  src: url(./fonts/gamingdice-font/Gamingdice-Brz3.ttf);
+}
+
 .contain {
   flex-grow: 1;
   overflow-y: scroll;
@@ -88,4 +93,8 @@ select {
   background-color: whitesmoke;
   bottom: 0;
   padding: 0.5em;
+}
+
+.diceRoll {
+  font-family: "myFont";
 }
