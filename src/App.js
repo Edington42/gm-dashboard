@@ -18,7 +18,6 @@ import {
 } from "@material-ui/core";
 
 /*TODOS
- * Update monster cards visual design
  * Better roller scroll bar
  * clean up files
  * upgrade to typescript
@@ -30,6 +29,8 @@ import {
  * parse non-exlicit rolls
  * Drag and drop cards
  * Update edit text visual design
+ * Clean up dependencies
+ * Hide/unlock rolls while editing fields?
  *
  *
  *

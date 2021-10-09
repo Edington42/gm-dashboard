@@ -1,5 +1,6 @@
 import React from "react";
 import { Action } from "./Action";
+import { List } from "@material-ui/core";
 
 export function ActionArea({ stats }) {
   let actions = [
@@ -8,9 +9,7 @@ export function ActionArea({ stats }) {
     ...stats.legendary_actions,
   ];
   let area = actions.map((action) => (
-    <div>
-      <Action key={action.name} action={action} />
-    </div>
+    <Action key={action.name} action={action} />
   ));
-  return <div>{area}</div>;
+  return <List>{area}</List>;
 }

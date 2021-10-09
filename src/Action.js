@@ -4,6 +4,17 @@ import popIn from "./pop-in.svg";
 import die from "./die.svg";
 import { RollLogContext } from "./RollLogContext";
 import { D20, rollDice, textToDie } from "./Roller";
+import {
+  Collapse,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@material-ui/core";
+//import { ArrowDropDownIcon, ArrowDropUpIcon } from "@material-ui/icons";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import CasinoIcon from "@mui/icons-material/Casino";
+import { ListItemButton, ListItemIcon } from "@mui/material";
 
 export function Action({ action }) {
   const [expanded, setExpanded] = useState(false);
@@ -27,14 +38,36 @@ export function Action({ action }) {
   }
 
   return (
-    <div title={action.desc}>
-      <img src={die} className="icon" onClick={(e) => roll(action)} />
-      {expanded ? action.name + ": " + action.desc : action.name}
-      <img
+    <>
+      <ListItem style={{ padding: "0px", paddingRight: "4px" }}>
+        <ListItemButton
+          style={{ padding: "0px", paddingRight: "4px" }}
+          title={action.desc}
+          onClick={(e) => roll(action)}
+        >
+          <ListItemIcon>
+            <CasinoIcon />
+          </ListItemIcon>
+          <ListItemText primary={action.name} />
+
+          {/* <Typography variant="h6" className="icon" style={{ display: "inline" }}>
+        {action.name}
+      </Typography> */}
+          {/* <img
         src={expanded ? popIn : popOut}
         className="icon"
         onClick={toggleExpand}
-      />
-    </div>
+      /> */}
+        </ListItemButton>
+        {expanded ? (
+          <ArrowDropUpIcon onClick={toggleExpand} />
+        ) : (
+          <ArrowDropDownIcon onClick={toggleExpand} />
+        )}
+      </ListItem>
+      <Collapse in={expanded}>
+        <Typography variant="body1">{action.desc}</Typography>
+      </Collapse>
+    </>
   );
 }
