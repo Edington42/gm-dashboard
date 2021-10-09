@@ -18,7 +18,6 @@ import {
 } from "@material-ui/core";
 
 /*TODOS
- * Better roller scroll bar
  * clean up files
  * upgrade to typescript
  * clean up console errors
