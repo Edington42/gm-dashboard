@@ -2,7 +2,16 @@ import "./App.css";
 import { useState, useEffect, useContext } from "react";
 import { MonsteArea } from "./MonsteArea";
 import { RollLogContext } from "./RollLogContext";
-import { AppBar, Tab, Tabs, TextField, Toolbar, Box } from "@material-ui/core";
+import {
+  AppBar,
+  Tab,
+  Tabs,
+  TextField,
+  Toolbar,
+  Input,
+  Box,
+  Button,
+} from "@material-ui/core";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import EditIcon from "@mui/icons-material/Edit";
 import EditOffIcon from "@mui/icons-material/EditOff";
@@ -12,7 +21,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 /*TODOS
- * Add export/import dash
+ * Add clear dash
  * clean up files
  * upgrade to typescript
  * die type in roll log
@@ -25,6 +34,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
  * Hide/unlock rolls while editing fields?
  * Top bar burger bar for
  * Add/edit icons for top bar
+ * Top right menu hides easily
  *
  *
  *
@@ -63,7 +73,16 @@ function App() {
     a.click();
   };
 
-  const importDash = () => {};
+  function importDash(e) {
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const text = e.target.result;
+      console.log(text);
+      localStorage.setItem("dash", text);
+      setDash(JSON.parse(text));
+    };
+    reader.readAsText(e.target.files[0]);
+  }
 
   useEffect(() => {
     fetch(
@@ -156,6 +175,17 @@ function App() {
               {edit ? "Show Edit" : "Hide Edit"}
             </MenuItem>
             <MenuItem onClick={exportDash}>Export Dashboard</MenuItem>
+            <MenuItem>
+              <label htmlFor="contained-button-file">
+                <input
+                  id="contained-button-file"
+                  type="file"
+                  hidden
+                  onInput={importDash}
+                />
+                Import Dashboard
+              </label>
+            </MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
