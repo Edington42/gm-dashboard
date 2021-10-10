@@ -1,36 +1,24 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Tesseract from "tesseract.js";
-import rhino from "./Rhino.txt";
 import { useState, useEffect, useContext } from "react";
 import { MonsteArea } from "./MonsteArea";
-import { RollContext } from "./RollContext";
 import { RollLogContext } from "./RollLogContext";
-import {
-  AppBar,
-  Tab,
-  Tabs,
-  TextField,
-  Typography,
-  Toolbar,
-  Card,
-  BottomNavigation,
-} from "@material-ui/core";
+import { AppBar, Tab, Tabs, TextField, Toolbar } from "@material-ui/core";
 
 /*TODOS
- * die type in roll log
  * Add export/import dash
+ * Adaptable tool bar
  * clean up files
  * upgrade to typescript
+ * die type in roll log
+ * parse non-exlicit rolls
  * clean up console errors
  * full stat popout
- * name in roll
- *
- * parse non-exlicit rolls
  * Drag and drop cards
  * Update edit text visual design
  * Clean up dependencies
  * Hide/unlock rolls while editing fields?
+ * Top bar burger bar for
+ * Add/edit icons for top bar
  *
  *
  *
@@ -99,10 +87,6 @@ function App() {
     actions = selection.actions.map((value) => (
       <div>
         <h2>{value.name}</h2>
-        {/*<h3>+ {value.attack_bonus} To Hit {value.damage_dice}
-        <button onClick={((e) => roll(value.attack_bonus,12))}>Roll</button>
-      </h3>
-  <p>{value.desc}</p>*/}
       </div>
     ));
   }
@@ -118,12 +102,6 @@ function App() {
   function toggleSearch() {
     setSearchOpen(!searchOpen);
   }
-
-  // const logs = rollLog.map((log, index) => (
-  //   <div key={index}>
-  //     {log} <br />
-  //   </div>
-  // ));
 
   return (
     <div className="app">

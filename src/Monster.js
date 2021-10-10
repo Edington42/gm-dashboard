@@ -1,7 +1,5 @@
 import React from "react";
 import { ActionArea } from "./ActionArea";
-import trash from "./delete.svg";
-import edit from "./edit.svg";
 import { Card, CardContent } from "@material-ui/core";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";

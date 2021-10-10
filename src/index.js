@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { RollProvider } from "./RollContext";
 import { RollLogProvider } from "./RollLogContext";
 
 ReactDOM.render(

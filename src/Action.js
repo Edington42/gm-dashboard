@@ -1,7 +1,4 @@
 import React, { useContext, useState } from "react";
-import popOut from "./pop-out.svg";
-import popIn from "./pop-in.svg";
-import die from "./die.svg";
 import { RollLogContext } from "./RollLogContext";
 import { D20, rollDice, textToDie } from "./Roller";
 import {
