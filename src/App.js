@@ -13,7 +13,6 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 /*TODOS
  * Add export/import dash
- * Adaptable tool bar
  * clean up files
  * upgrade to typescript
  * die type in roll log
@@ -55,6 +54,16 @@ function App() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const exportDash = () => {
+    const a = document.createElement("a");
+    const file = new Blob([JSON.stringify(dash)], { type: "text/plain" });
+    a.href = URL.createObjectURL(file);
+    a.download = "Dashboard";
+    a.click();
+  };
+
+  const importDash = () => {};
 
   useEffect(() => {
     fetch(
@@ -146,6 +155,7 @@ function App() {
             <MenuItem onClick={toggleEdit}>
               {edit ? "Show Edit" : "Hide Edit"}
             </MenuItem>
+            <MenuItem onClick={exportDash}>Export Dashboard</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
