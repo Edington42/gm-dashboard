@@ -65,6 +65,11 @@ function App() {
     setAnchorEl(null);
   };
 
+  function clearDash() {
+    localStorage.removeItem("dash");
+    setDash([]);
+  }
+
   const exportDash = () => {
     const a = document.createElement("a");
     const file = new Blob([JSON.stringify(dash)], { type: "text/plain" });
@@ -77,7 +82,6 @@ function App() {
     const reader = new FileReader();
     reader.onload = async (e) => {
       const text = e.target.result;
-      console.log(text);
       localStorage.setItem("dash", text);
       setDash(JSON.parse(text));
     };
@@ -174,6 +178,7 @@ function App() {
             <MenuItem onClick={toggleEdit}>
               {edit ? "Show Edit" : "Hide Edit"}
             </MenuItem>
+            <MenuItem onClick={clearDash}>Clear Dashboard</MenuItem>
             <MenuItem onClick={exportDash}>Export Dashboard</MenuItem>
             <MenuItem>
               <label htmlFor="contained-button-file">
