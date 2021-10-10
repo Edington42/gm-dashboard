@@ -2,7 +2,14 @@ import "./App.css";
 import { useState, useEffect, useContext } from "react";
 import { MonsteArea } from "./MonsteArea";
 import { RollLogContext } from "./RollLogContext";
-import { AppBar, Tab, Tabs, TextField, Toolbar } from "@material-ui/core";
+import { AppBar, Tab, Tabs, TextField, Toolbar, Box } from "@material-ui/core";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import EditIcon from "@mui/icons-material/Edit";
+import EditOffIcon from "@mui/icons-material/EditOff";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 /*TODOS
  * Add export/import dash
@@ -28,6 +35,8 @@ import { AppBar, Tab, Tabs, TextField, Toolbar } from "@material-ui/core";
  *
  */
 
+const ITEM_HEIGHT = 48;
+
 function App() {
   const dashInit = localStorage.getItem("dash");
   const [monsterList, setMonsterList] = useState([]);
@@ -37,6 +46,15 @@ function App() {
   const [edit, setEdit] = useState(false);
   const [searchOpen, setSearchOpen] = useState(true);
   const { rollLog } = useContext(RollLogContext);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   useEffect(() => {
     fetch(
@@ -106,21 +124,29 @@ function App() {
   return (
     <div className="app">
       <AppBar position="static" className="app-header">
-        <Toolbar>
-          <select onChange={changeSelect}>
-            <option value="" disabled selected>
-              Select a Monster
-            </option>
-            {names}
-          </select>
-          <Tabs>
-            <Tab onClick={saveMonster} label="Add" />
-            <Tab
-              className="header-toggle"
-              onClick={toggleEdit}
-              label={edit ? "Hide Edit" : "Show Edit"}
+        <Toolbar className="tool">
+          <Box className="header-left">
+            <select onChange={changeSelect}>
+              <option value="" disabled selected>
+                Select a Monster
+              </option>
+              {names}
+            </select>
+            <AddCircleIcon
+              fontSize="large"
+              className="header-icon"
+              onClick={saveMonster}
             />
-          </Tabs>
+          </Box>
+          <IconButton className="menu" onClick={handleClick}>
+            <MoreVertIcon fontSize="large" />
+          </IconButton>
+
+          <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+            <MenuItem onClick={toggleEdit}>
+              {edit ? "Show Edit" : "Hide Edit"}
+            </MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
       <div className="contain">

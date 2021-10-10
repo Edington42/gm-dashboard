@@ -11,6 +11,19 @@ html {
   height: 9vh;
 }
 
+.tool {
+}
+
+.header-icon {
+  vertical-align: middle;
+  margin-left: 0.5em;
+}
+
+.header-left {
+  padding: 0;
+  flex: 1;
+}
+
 .monster-area {
   display: flex;
   flex-wrap: wrap;
@@ -78,6 +91,7 @@ html {
 
 select {
   height: 3.5em;
+  width: 15em;
 }
 
 .scroller {
