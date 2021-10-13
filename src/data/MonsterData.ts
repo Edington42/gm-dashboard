@@ -1,0 +1,50 @@
+import { ActionData } from "./ActionData";
+
+export interface MonsterData {
+  name: string;
+  size: string;
+  type: string;
+  subtype: string;
+  group: string;
+  alignment: string;
+  armor_class: number;
+  armor_desc: string;
+  hit_points: number;
+  hit_dice: string;
+  speed: {
+    fly: number;
+    swim: number;
+    walk: number;
+  };
+  strength: number;
+  dexterity: number;
+  constitution: number;
+  intelligence: number;
+  wisdom: number;
+  charisma: number;
+  strength_save: number;
+  dexterity_save: number;
+  constitution_save: number;
+  intelligence_save: number;
+  wisdom_save: number;
+  charisma_save: number;
+  perception: number;
+  skills: {};
+  damage_vulnerabilities: string;
+  damage_resistances: string;
+  damage_immunities: string;
+  condition_immunities: string;
+  senses: string;
+  languages: string;
+  challenge_rating: string;
+  actions: [ActionData];
+  reactions: [ActionData];
+  legendary_desc: string;
+  legendary_actions: [ActionData];
+  special_abilities: [ActionData];
+  spell_list: [];
+  img_main: null;
+  document__slug: string;
+  document__title: string;
+  document__license_url: string;
+}
