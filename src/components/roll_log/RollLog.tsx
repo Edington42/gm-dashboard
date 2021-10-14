@@ -1,6 +1,8 @@
-import { TextField } from "@material-ui/core";
+import { Card, Paper, TextField, Typography } from "@material-ui/core";
 import { useContext } from "react";
 import { RollLogContext } from "../../context/RollLogContext";
+import { RollText } from "./RollText";
+import "./css/RollLog.css";
 
 export function RollLog() {
   /* roll log */
@@ -8,7 +10,8 @@ export function RollLog() {
 
   return (
     <div className="sticky">
-      <TextField
+      <Typography variant="caption">Rolls</Typography>
+      {/* <TextField
         label="Rolls"
         variant="outlined"
         className="scroller"
@@ -17,7 +20,13 @@ export function RollLog() {
         inputProps={{ readOnly: true }}
         rows={6}
         rowsMax={6}
-      ></TextField>
+      ></TextField> */}
+      <Paper className="scroller">
+        <RollText rolls={[]} />
+        <RollText rolls={[]} />
+        <RollText rolls={[]} />
+        <RollText rolls={[]} />
+      </Paper>
     </div>
   );
 }

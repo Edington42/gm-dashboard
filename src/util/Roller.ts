@@ -1,9 +1,14 @@
-interface Die {
+interface Dice {
   count: number;
   sides: number;
 }
 
-export function rollDice(dice: Die[], bonus: number) {
+export interface DieRoll {
+  roll: number;
+  sides: number;
+}
+
+export function rollDice(dice: Dice[], bonus: number) {
   let total = 0;
   let display = "(";
   console.log(dice);
@@ -22,9 +27,8 @@ export function rollDice(dice: Die[], bonus: number) {
   return { total: total, display: display };
 }
 
-export function textToDie(text: string) {
+export function textToDice(text: string): Dice {
   let dieText = text.split("d");
-  console.log(dieText);
   return { count: parseInt(dieText[0]), sides: parseInt(dieText[1]) };
 }
 

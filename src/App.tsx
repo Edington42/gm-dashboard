@@ -1,12 +1,15 @@
 import "./App.css";
 import { MonsteArea } from "./components/dashboard/MonsteArea";
-
 import { Header } from "./components/header/Header";
 import { Editor } from "./components/editor/Editor";
+import { RollLog } from "./components/roll_log/RollLog";
 
 /*TODOS
  *
  * die type in roll log
+ * add notes for description/attack descriptions/phrases
+ * Add card for basic rolls
+ * Spells
  * parse non-exlicit rolls
  * clean up console errors
  * full stat popout
@@ -23,8 +26,6 @@ import { Editor } from "./components/editor/Editor";
  *
  */
 
-const ITEM_HEIGHT = 48;
-
 function App() {
   return (
     <div className="app">
@@ -33,6 +34,7 @@ function App() {
         <Editor />
         <MonsteArea />
       </div>
+      <RollLog />
     </div>
   );
 }

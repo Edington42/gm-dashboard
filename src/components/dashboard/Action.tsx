@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { RollLogContext } from "../../context/RollLogContext";
-import { D20, rollDice, textToDie } from "../../util/Roller";
+import { D20, rollDice, textToDice } from "../../util/Roller";
 import { ActionData } from "../../data/ActionData";
 import {
   Collapse,
@@ -30,7 +30,7 @@ export function Action({ action }: IProps) {
   function roll(stats: ActionData) {
     let toHit = rollDice([D20], stats.attack_bonus);
     let adDis = rollDice([D20], stats.attack_bonus);
-    let damage = rollDice([textToDie(stats.damage_dice)], stats.damage_bonus);
+    let damage = rollDice([textToDice(stats.damage_dice)], stats.damage_bonus);
 
     let toHitText =
       stats.name + " to hit: " + toHit.display + " " + adDis.display;
