@@ -1,4 +1,5 @@
 export interface ActionData {
+  monsterName: string;
   attack_bonus: number;
   damage_dice: string;
   desc: string;

@@ -5,7 +5,8 @@
 
 .roll-text {
   font-family: dice;
-  font-size: 24px;
+  font-size: 32px;
+  font-weight: bold;
   margin-block-start: 0.2em;
   margin-block-end: 0;
 }
@@ -18,10 +19,26 @@
   flex: 1;
 }
 
+.roll-line {
+  flex-direction: row;
+}
+
+.roll-text-line {
+  display: inline;
+}
+
 .sticky {
   height: 19vh;
   background-color: whitesmoke;
   padding: 0.5em;
   display: flex;
   flex-flow: column;
+}
+
+.log-roll {
+  padding-left: 3em;
+}
+
+.die-icon {
+  font-size: 1.5em;
 }

@@ -1,32 +1,22 @@
-import { Card, Paper, TextField, Typography } from "@material-ui/core";
+import { Paper, Typography } from "@material-ui/core";
 import { useContext } from "react";
 import { RollLogContext } from "../../context/RollLogContext";
-import { RollText } from "./RollText";
 import "./css/RollLog.css";
+import { AttackAction, rollAttack, rollDice } from "../../util/Roller";
+import { AttackRollText } from "./AttackRollText";
+import { DamageRollText } from "./DamageRoll";
+import { AttackActionLog } from "./AttackActionLog";
 
 export function RollLog() {
   /* roll log */
   const { rollLog } = useContext(RollLogContext);
 
+  let log = rollLog.map((logItem) => <AttackActionLog action={logItem} />);
+
   return (
     <div className="sticky">
       <Typography variant="caption">Rolls</Typography>
-      {/* <TextField
-        label="Rolls"
-        variant="outlined"
-        className="scroller"
-        multiline
-        value={rollLog}
-        inputProps={{ readOnly: true }}
-        rows={6}
-        rowsMax={6}
-      ></TextField> */}
-      <Paper className="scroller">
-        <RollText rolls={[]} />
-        <RollText rolls={[]} />
-        <RollText rolls={[]} />
-        <RollText rolls={[]} />
-      </Paper>
+      <Paper className="scroller">{log}</Paper>
     </div>
   );
 }

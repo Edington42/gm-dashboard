@@ -12,8 +12,9 @@ export function ActionArea({ monster }: IProps) {
     ...monster.reactions,
     ...monster.legendary_actions,
   ];
+  let name = monster.name;
   let area = actions.map((action) => (
-    <Action key={action.name} action={action} />
+    <Action key={action.name} action={{ ...action, monsterName: name }} />
   ));
   return <List>{area}</List>;
 }
