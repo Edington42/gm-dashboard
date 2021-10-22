@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { DashboardContext, DashboardItem } from "../../context/DashboarContex";
+import { AbilityRollCard } from "./AbilityRollCard";
 import { MonsterCard } from "./MonsterCard";
+import "./css/Dashboard.css";
 
 export function MonsteArea() {
   const { dash } = useContext(DashboardContext);
@@ -8,5 +10,10 @@ export function MonsteArea() {
   let area = dash.map((monster: DashboardItem, index) => (
     <MonsterCard key={index} stats={monster} />
   ));
-  return <div className="monster-area">{area}</div>;
+  return (
+    <div className="monster-area">
+      <AbilityRollCard />
+      {area}
+    </div>
+  );
 }

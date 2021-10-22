@@ -6,9 +6,8 @@ import { RollLog } from "./components/roll_log/RollLog";
 
 /*TODOS
  *
- * die type in roll log
- * add notes for description/attack descriptions/phrases
  * Add card for basic rolls
+ * add notes for description/attack descriptions/phrases
  * Spells
  * parse non-exlicit rolls
  * clean up console errors
@@ -20,6 +19,7 @@ import { RollLog } from "./components/roll_log/RollLog";
  * Top bar burger bar for
  * Add/edit icons for top bar
  * Top right menu hides easily
+ * Improve readability of roll log
  * apply type doc
  * Organize css
  *

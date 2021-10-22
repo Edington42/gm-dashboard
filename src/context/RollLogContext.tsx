@@ -1,10 +1,29 @@
 import React, { createContext, useReducer } from "react";
 import { ActionData } from "../data/ActionData";
-import { AttackAction, rollAttack, rollDice, textToDice } from "../util/Roller";
+import {
+  ABILITY_ROLL_DEFAULT,
+  DiceRollDetails,
+  MultiRoll,
+  rollAttack,
+  rollDice,
+  textToDice,
+} from "../util/Roller";
+
+export interface ActionDetails {
+  monsterName?: string;
+  actionName?: string;
+  rolls: DiceRollDetails[];
+}
+
+export interface ActionResults {
+  monsterName?: string;
+  actionName?: string;
+  rolls: MultiRoll[];
+}
 
 export interface RollLogContent {
-  rollLog: AttackAction[];
-  logRoll: (action: ActionData) => void;
+  rollLog: ActionResults[];
+  logRoll: (details: ActionData) => void;
 }
 
 export const RollLogContext = createContext<RollLogContent>({
@@ -12,23 +31,45 @@ export const RollLogContext = createContext<RollLogContent>({
   logRoll: () => {},
 });
 
-function actionDataToRolls(action: ActionData): AttackAction {
-  let attackRoll = rollAttack(action.attack_bonus);
-  let diceRoll = rollDice(
-    [textToDice(action.damage_dice)],
-    action.damage_bonus
-  );
+export function toDetails(data: ActionData): ActionDetails {
+  let rolls: DiceRollDetails[] = [];
+  rolls.push({
+    ...ABILITY_ROLL_DEFAULT,
+    rollTitle: "To Hit:",
+    bonus: data.attack_bonus,
+  });
+
+  rolls.push({
+    rollTitle: "Damage:",
+    bonus: data.damage_bonus,
+    toRoll: [textToDice(data.damage_dice)],
+    rolls: 1,
+  });
+
   return {
-    monsterName: action.monsterName,
-    actionName: action.name,
-    attackRoll: attackRoll,
-    damageRoll: diceRoll,
+    monsterName: data.monsterName,
+    actionName: data.name,
+    rolls: rolls,
+  };
+}
+
+function actionDetailsToResults(details: ActionDetails): ActionResults {
+  let results = details.rolls.map((detail) => {
+    return rollDice(detail);
+  });
+  return {
+    monsterName: details.monsterName,
+    actionName: details.actionName,
+    rolls: results,
   };
 }
 
 export const RollLogProvider: React.FC<{}> = ({ children }) => {
-  function addRoll(state: AttackAction[], action: ActionData): AttackAction[] {
-    return [actionDataToRolls(action), ...state];
+  function addRoll(
+    state: ActionResults[],
+    details: ActionData
+  ): ActionResults[] {
+    return [actionDetailsToResults(toDetails(details)), ...state];
   }
   const [rollLog, logRoll] = useReducer(addRoll, []);
 

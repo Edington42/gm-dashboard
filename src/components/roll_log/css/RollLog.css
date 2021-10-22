@@ -35,10 +35,6 @@
   flex-flow: column;
 }
 
-.log-roll {
+.titled-log-roll {
   padding-left: 3em;
-}
-
-.die-icon {
-  font-size: 1.5em;
 }

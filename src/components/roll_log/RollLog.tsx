@@ -2,16 +2,15 @@ import { Paper, Typography } from "@material-ui/core";
 import { useContext } from "react";
 import { RollLogContext } from "../../context/RollLogContext";
 import "./css/RollLog.css";
-import { AttackAction, rollAttack, rollDice } from "../../util/Roller";
+import { rollAttack, rollDice } from "../../util/Roller";
 import { AttackRollText } from "./AttackRollText";
-import { DamageRollText } from "./DamageRoll";
-import { AttackActionLog } from "./AttackActionLog";
+import { ActionRollLog } from "./ActionRollLog";
 
 export function RollLog() {
   /* roll log */
   const { rollLog } = useContext(RollLogContext);
 
-  let log = rollLog.map((logItem) => <AttackActionLog action={logItem} />);
+  let log = rollLog.map((logItem) => <ActionRollLog actionResults={logItem} />);
 
   return (
     <div className="sticky">
