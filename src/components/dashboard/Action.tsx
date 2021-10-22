@@ -1,6 +1,11 @@
 import { useContext, useState } from "react";
-import { RollLogContext } from "../../context/RollLogContext";
-import { rollDice, textToDice } from "../../util/Roller";
+import { ActionDetails, RollLogContext } from "../../context/RollLogContext";
+import {
+  ABILITY_ROLL_DEFAULT,
+  DiceRollDetails,
+  rollDice,
+  textToDice,
+} from "../../util/Roller";
 import { ActionData } from "../../data/ActionData";
 import {
   Collapse,
@@ -18,6 +23,28 @@ interface IProps {
   action: ActionData;
 }
 
+function toDetails(data: ActionData): ActionDetails {
+  let rolls: DiceRollDetails[] = [];
+  rolls.push({
+    ...ABILITY_ROLL_DEFAULT,
+    rollTitle: "To Hit:",
+    bonus: data.attack_bonus,
+  });
+
+  rolls.push({
+    rollTitle: "Damage:",
+    bonus: data.damage_bonus,
+    toRoll: [textToDice(data.damage_dice)],
+    rolls: 1,
+  });
+
+  return {
+    monsterName: data.monsterName,
+    actionName: data.name,
+    rolls: rolls,
+  };
+}
+
 export function Action({ action }: IProps) {
   const [expanded, setExpanded] = useState(false);
   const { logRoll } = useContext(RollLogContext);
@@ -28,7 +55,7 @@ export function Action({ action }: IProps) {
   }
 
   function roll(stats: ActionData) {
-    logRoll(stats);
+    logRoll(toDetails(stats));
   }
 
   return (

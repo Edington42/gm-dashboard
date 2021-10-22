@@ -9,28 +9,54 @@ import {
   FormControl,
   MenuItem,
 } from "@material-ui/core";
-import { ReactElement } from "react";
+import { ChangeEvent, ReactElement, useContext, useState } from "react";
 import { DieIcon } from "../../common/DieIcon";
-import { rollToIconClass } from "../../util/Roller";
+import { RollLogContext } from "../../context/RollLogContext";
+import { ABILITY_ROLL_DEFAULT, rollToIconClass } from "../../util/Roller";
 
 const BUTTON_MOD_MAX = 5;
 const MOD_MAX = 30;
 
 export function AbilityRollCard() {
   const mods: ReactElement[] = [];
+  const [posCustomMod, setPosCustomMod] = useState<number>(0);
+  const [negCustomMod, setNegCustomMod] = useState<number>(0);
+  const { logRoll } = useContext(RollLogContext);
 
-  function roll() {}
+  function handleChange(valueString: string) {
+    let value: number = parseInt(valueString);
+    value > 0 ? setPosCustomMod(value) : setNegCustomMod(value);
+  }
+
+  function roll(modifier: number) {
+    logRoll({
+      rolls: [
+        {
+          ...ABILITY_ROLL_DEFAULT,
+          bonus: modifier,
+        },
+      ],
+    });
+  }
 
   for (let i = 0; i < BUTTON_MOD_MAX + 1; i++) {
     mods.push(
       <>
         <Grid item xs={6}>
-          <Button variant="contained" className="mod-button">
+          <Button
+            onClick={() => roll(i)}
+            variant="contained"
+            className="mod-button"
+          >
             +{i}
           </Button>
         </Grid>
         <Grid item xs={6}>
-          <Button variant="outlined" className="mod-button">
+          <Button
+            onClick={() => roll(-i)}
+            variant="outlined"
+            className="mod-button"
+          >
             -{i}
           </Button>
         </Grid>
@@ -38,12 +64,20 @@ export function AbilityRollCard() {
     );
   }
 
-  const posOptions: ReactElement[] = [];
-  const negOptions: ReactElement[] = [];
+  const posOptions: JSX.Element[] = [];
+  const negOptions: JSX.Element[] = [];
 
   for (let i = BUTTON_MOD_MAX; i < MOD_MAX; i++) {
-    posOptions.push(<MenuItem value={+i}>+{i}</MenuItem>);
-    negOptions.push(<MenuItem value={-i}>-{i}</MenuItem>);
+    posOptions.push(
+      <MenuItem onClick={() => roll(i)} value={+i}>
+        +{i}
+      </MenuItem>
+    );
+    negOptions.push(
+      <MenuItem onClick={() => roll(-i)} value={-i}>
+        -{i}
+      </MenuItem>
+    );
   }
 
   mods.push(
@@ -55,7 +89,8 @@ export function AbilityRollCard() {
             labelId="positive-bonus-label"
             className="mod-button select-mod"
             variant="outlined"
-            value={"+ Bonus"}
+            value={posCustomMod}
+            onChange={(event) => handleChange(event.target.value as string)}
           >
             {posOptions}
           </Select>
@@ -67,7 +102,8 @@ export function AbilityRollCard() {
           <Select
             labelId="negative-bonus-label"
             className="mod-button select-mod"
-            value={"- Bonus"}
+            value={negCustomMod}
+            onChange={(event) => handleChange(event.target.value as string)}
             variant="outlined"
           >
             {negOptions}

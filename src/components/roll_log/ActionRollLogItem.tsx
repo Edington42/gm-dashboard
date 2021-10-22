@@ -23,8 +23,12 @@ export function ActionRollLogItem({
   return (
     <Typography className={titled ? "titled-log-roll" : "untitled-log-roll"}>
       {rolls.title && rolls.title + " "}
-      {totals} ({rollText}
-      )+{rolls.bonus}
+      {totals} ({rollText})
+      {rolls.bonus != 0 ? (
+        (rolls.bonus > 0 ? "+" : "-") + Math.abs(rolls.bonus)
+      ) : (
+        <></>
+      )}
     </Typography>
   );
 }

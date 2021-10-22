@@ -23,35 +23,13 @@ export interface ActionResults {
 
 export interface RollLogContent {
   rollLog: ActionResults[];
-  logRoll: (details: ActionData) => void;
+  logRoll: (details: ActionDetails) => void;
 }
 
 export const RollLogContext = createContext<RollLogContent>({
   rollLog: [],
   logRoll: () => {},
 });
-
-export function toDetails(data: ActionData): ActionDetails {
-  let rolls: DiceRollDetails[] = [];
-  rolls.push({
-    ...ABILITY_ROLL_DEFAULT,
-    rollTitle: "To Hit:",
-    bonus: data.attack_bonus,
-  });
-
-  rolls.push({
-    rollTitle: "Damage:",
-    bonus: data.damage_bonus,
-    toRoll: [textToDice(data.damage_dice)],
-    rolls: 1,
-  });
-
-  return {
-    monsterName: data.monsterName,
-    actionName: data.name,
-    rolls: rolls,
-  };
-}
 
 function actionDetailsToResults(details: ActionDetails): ActionResults {
   let results = details.rolls.map((detail) => {
@@ -67,9 +45,9 @@ function actionDetailsToResults(details: ActionDetails): ActionResults {
 export const RollLogProvider: React.FC<{}> = ({ children }) => {
   function addRoll(
     state: ActionResults[],
-    details: ActionData
+    details: ActionDetails
   ): ActionResults[] {
-    return [actionDetailsToResults(toDetails(details)), ...state];
+    return [actionDetailsToResults(details), ...state];
   }
   const [rollLog, logRoll] = useReducer(addRoll, []);
 
