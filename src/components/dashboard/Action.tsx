@@ -50,7 +50,6 @@ export function Action({ action }: IProps) {
   const { logRoll } = useContext(RollLogContext);
 
   function toggleExpand() {
-    console.log("Expand");
     setExpanded(!expanded);
   }
 
@@ -70,15 +69,6 @@ export function Action({ action }: IProps) {
             <CasinoIcon />
           </ListItemIcon>
           <ListItemText primary={action.name} />
-
-          {/* <Typography variant="h6" className="icon" style={{ display: "inline" }}>
-        {action.name}
-      </Typography> */}
-          {/* <img
-        src={expanded ? popIn : popOut}
-        className="icon"
-        onClick={toggleExpand}
-      /> */}
         </ListItemButton>
         {expanded ? (
           <ArrowDropUpIcon onClick={toggleExpand} />
