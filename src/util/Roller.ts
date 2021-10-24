@@ -1,4 +1,6 @@
-interface Dice {
+import { ActionData } from "../data/ActionData";
+
+export interface Dice {
   count: number;
   sides: number;
 }

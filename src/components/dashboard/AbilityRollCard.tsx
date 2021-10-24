@@ -116,7 +116,7 @@ export function AbilityRollCard() {
   return (
     <Card className="monster">
       <CardContent style={{ paddingLeft: ".25em", paddingRight: ".25em" }}>
-        <Typography variant="h5" style={{ display: "inline" }}>
+        <Typography variant="h6" style={{ display: "inline" }}>
           Ability Roll <DieIcon roll={{ sides: 20, roll: 20 }} />|
           <DieIcon roll={{ sides: 20, roll: 20 }} />
         </Typography>

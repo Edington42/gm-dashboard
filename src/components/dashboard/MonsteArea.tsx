@@ -3,6 +3,7 @@ import { DashboardContext, DashboardItem } from "../../context/DashboarContex";
 import { AbilityRollCard } from "./AbilityRollCard";
 import { MonsterCard } from "./MonsterCard";
 import "./css/Dashboard.css";
+import { CustomRollCard } from "./CustomRollCard";
 
 export function MonsteArea() {
   const { dash } = useContext(DashboardContext);
@@ -13,6 +14,7 @@ export function MonsteArea() {
   return (
     <div className="monster-area">
       <AbilityRollCard />
+      <CustomRollCard />
       {area}
     </div>
   );
