@@ -68,6 +68,12 @@ export function StatBlock({ stats }: { stats: MonsterData }) {
     </Grid>
   ));
 
+  let prof = Object.entries(stats.skills).map(([key, value]) => (
+    <Typography key={key} variant="body1">
+      {key}:{" " + value}
+    </Typography>
+  ));
+
   return (
     <>
       <Divider light />
@@ -83,6 +89,37 @@ export function StatBlock({ stats }: { stats: MonsterData }) {
         {saveValueLabels}
       </Grid>
       <Divider light />
+      {prof.length > 0 && (
+        <>
+          {prof}
+          <Divider light />
+        </>
+      )}
+
+      {stats.damage_vulnerabilities && (
+        <>
+          <Typography>
+            Damage Vulnerabilities:{" " + stats.damage_vulnerabilities}
+          </Typography>
+          <Divider light />
+        </>
+      )}
+      {stats.damage_resistances && (
+        <>
+          <Typography>
+            Damage Resitatnces:{" " + stats.damage_resistances}
+          </Typography>
+          <Divider light />
+        </>
+      )}
+      {stats.damage_immunities && (
+        <>
+          <Typography>
+            Damage Immunities:{" " + stats.damage_immunities}
+          </Typography>
+          <Divider light />
+        </>
+      )}
     </>
   );
 }
