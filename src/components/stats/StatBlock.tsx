@@ -74,6 +74,14 @@ export function StatBlock({ stats }: { stats: MonsterData }) {
     </Typography>
   ));
 
+  let specialAbilitis = Object.entries(stats.special_abilities).map(
+    ([key, value]) => (
+      <Typography key={key} variant="body1">
+        {key}:{" " + value}
+      </Typography>
+    )
+  );
+
   return (
     <>
       <Divider light />
@@ -95,7 +103,6 @@ export function StatBlock({ stats }: { stats: MonsterData }) {
           <Divider light />
         </>
       )}
-
       {stats.damage_vulnerabilities && (
         <>
           <Typography>
@@ -120,6 +127,38 @@ export function StatBlock({ stats }: { stats: MonsterData }) {
           <Divider light />
         </>
       )}
+      {stats.condition_immunities && (
+        <>
+          <Typography>
+            Condition Immunities:{" " + stats.condition_immunities}
+          </Typography>
+          <Divider light />
+        </>
+      )}
+      {stats.senses && (
+        <>
+          <Typography>Senses:{" " + stats.senses}</Typography>
+          <Divider light />
+        </>
+      )}
+      {stats.languages && (
+        <>
+          <Typography>Languages:{" " + stats.languages}</Typography>
+          <Divider light />
+        </>
+      )}
+      {stats.legendary_desc && (
+        <>
+          <Typography>Legendary Desc:{" " + stats.legendary_desc}</Typography>
+          <Divider light />
+        </>
+      )}
+      Special Abilities
+      <Divider light />
+      Spell Desc?
+      <Divider light />
+      Spell list to actions?
+      <Divider light />
     </>
   );
 }
