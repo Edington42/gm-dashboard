@@ -4,6 +4,34 @@ GM Dashboard is a web application intended to help Game Masters(GM) run the game
 
 This application focuses on putting dice rolls and the most complex statistics at the fingertips of the GM, so they may focus as much of their attention as possible on continuing the narrative and the other players.
 
+## Features
+
+### Select Monsters
+![select](https://github.com/Edington42/gm-dashboard/blob/main/sample/select_monster.png)
+* Build a custom dashboard by selecting from dozens of premade monsters provided by https://open5e.com/.
+
+### Easy Rolling
+![base](https://github.com/Edington42/gm-dashboard/blob/main/sample/base.png)
+* First card rolls D20 with any modifier.  Rolls twice and totals both for Advantage/Disadvantage.
+* Second card rolls any number of D4, D6, D8, D10, D12 and totals the result.
+* Additional cards can be added, updated, or removed to display stats and roll attacks for monsters.
+* All rolls logged at bottom of screen.
+
+### Quick Stat Access
+![details](https://github.com/Edington42/gm-dashboard/blob/main/sample/monster_details.png)
+* Quickly show and hide details for:
+   * Overall monster statistics.
+   * Ability statistics.
+
+### Customize Monsters
+![edit](https://github.com/Edington42/gm-dashboard/blob/main/sample/edit_monster.png)
+* Edit monster details in JSON format
+
+### Manage Dashboard
+![options](https://github.com/Edington42/gm-dashboard/blob/main/sample/options_menu.png)
+* Import and export your dashboard in JSON format.
+* Access other dashboard settings.
+
 ## Usage
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
