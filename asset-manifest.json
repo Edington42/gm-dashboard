@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/gm-dashboard/static/css/main.7bec84da.chunk.css",
+    "main.js": "/gm-dashboard/static/js/main.03eb6a94.chunk.js",
+    "main.js.map": "/gm-dashboard/static/js/main.03eb6a94.chunk.js.map",
+    "runtime-main.js": "/gm-dashboard/static/js/runtime-main.0a4a1621.js",
+    "runtime-main.js.map": "/gm-dashboard/static/js/runtime-main.0a4a1621.js.map",
+    "static/js/2.5707a669.chunk.js": "/gm-dashboard/static/js/2.5707a669.chunk.js",
+    "static/js/2.5707a669.chunk.js.map": "/gm-dashboard/static/js/2.5707a669.chunk.js.map",
+    "static/js/3.9eecee8e.chunk.js": "/gm-dashboard/static/js/3.9eecee8e.chunk.js",
+    "static/js/3.9eecee8e.chunk.js.map": "/gm-dashboard/static/js/3.9eecee8e.chunk.js.map",
+    "index.html": "/gm-dashboard/index.html",
+    "static/css/main.7bec84da.chunk.css.map": "/gm-dashboard/static/css/main.7bec84da.chunk.css.map",
+    "static/js/2.5707a669.chunk.js.LICENSE.txt": "/gm-dashboard/static/js/2.5707a669.chunk.js.LICENSE.txt",
+    "static/media/RollLog.css": "/gm-dashboard/static/media/Gamingdice-Brz3.99f84d90.ttf",
+    "static/media/dicefont.css": "/gm-dashboard/static/media/dicefont.f6e83a21.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a4a1621.js",
+    "static/js/2.5707a669.chunk.js",
+    "static/css/main.7bec84da.chunk.css",
+    "static/js/main.03eb6a94.chunk.js"
+  ]
+}
